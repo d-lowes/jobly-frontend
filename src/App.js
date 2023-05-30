@@ -4,6 +4,7 @@ import RoutesList from './RoutesList';
 function App() {
   return (
     <div className="App">
+      <Nav />
       <RoutesList />
     </div>
   );

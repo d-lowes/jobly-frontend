@@ -6,8 +6,8 @@ function RoutesList() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Companies" element={<Companies />} />
-          <Route path="/Jobs" element={<Jobs />} />
+          <Route path="/companies" element={<Companies />} />
+          <Route path="/jobs" element={<Jobs />} />
         </Routes>
       </BrowserRouter>
     </div>
