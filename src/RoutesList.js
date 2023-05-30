@@ -1,4 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react';
+import { React, BrowserRouter, Routes, Route } from 'react';
+import Home from './Home';
+import Companies from './Companies';
+import CompanyDetail from './CompanyDetail';
+import Jobs from './Jobs';
 
 function RoutesList() {
   return (
@@ -7,6 +11,7 @@ function RoutesList() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/companies" element={<Companies />} />
+          <Route path="/companies/:handle" element={<CompanyDetail />} />
           <Route path="/jobs" element={<Jobs />} />
         </Routes>
       </BrowserRouter>

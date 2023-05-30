@@ -1,10 +1,11 @@
 import './App.css';
+import NavBar from './NavBar'
 import RoutesList from './RoutesList';
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+      <NavBar />
       <RoutesList />
     </div>
   );
