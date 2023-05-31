@@ -1,14 +1,33 @@
-function handleChange(evt) {
+import { React, useState } from "react";
 
-  const [formInput, setformInput] = useState({
-    searchInput: ""
-  });
+function SearchForm({ searchCompanies }) {
+  const [formData, setFormData] = useState("");
 
-  const fieldName = evt.target.name;
-  const value = evt.target.value;
+  /** Call parent function and clear form. */
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    searchCompanies(formData);
+    setFormData("");
+  }
 
-  setformInput(currData => {
-    currData[fieldName] = value;
-    return {...currData};
-  });
+  /** Update form input. */
+  function handleChange(evt) {
+    const { value } = evt.target;
+    setFormData(value);
+   }
+
+  return (
+    <div>
+      <form className="search-form" onSubmit={handleSubmit}>
+        <input
+        placeholder="Search for a company"
+        value={formData}
+        onChange={handleChange}>
+        </input>
+        <button className="btn-primary">Submit</button>
+      </form>
+    </div>
+  )
 }
+
+export default SearchForm;

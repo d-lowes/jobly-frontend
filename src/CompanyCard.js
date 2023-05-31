@@ -1,9 +1,11 @@
 import React from "react";
 
-function CompanyCard({ company }) {
+function CompanyCard({ name, description, logoUrl }) {
  return(
   <div>
-
+    <h3>{name}</h3>
+    <p>{description}</p>
+    <img src={logoUrl} alt={name}></img>
   </div>
  )
 }
