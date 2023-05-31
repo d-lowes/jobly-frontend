@@ -1,12 +1,12 @@
 import { React, useState } from "react";
 
-function SearchForm({ searchCompanies }) {
+function SearchForm({ search }) {
   const [formData, setFormData] = useState("");
 
   /** Call parent function and clear form. */
   function handleSubmit(evt) {
     evt.preventDefault();
-    searchCompanies(formData);
+    search(formData);
     setFormData("");
   }
 

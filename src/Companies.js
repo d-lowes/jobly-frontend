@@ -7,14 +7,21 @@ import SearchForm from "./SearchForm";
 
 
 /** Render a list of companies.
+ *
+ * State:
+ * - companies: a current list of companies
+ *
+ * RoutesList -> Companies -> { CompanyCard, SearchForm }
  */
 function Companies() {
   const [companies, setCompanies] = useState([]);
 
+  /** Renders all companies on mount. */
   useEffect(() => {
     searchCompanies();
   }, []);
 
+  /** Retrieve a list of companies from the API. */
   async function searchCompanies(searchInput) {
     const companies = await JoblyApi.getCompanies(searchInput);
     setCompanies(companies);
@@ -23,7 +30,7 @@ function Companies() {
   return (
     <div>
       <h1>Companies</h1>
-      <SearchForm searchCompanies={searchCompanies} />
+      <SearchForm search={searchCompanies} />
       <div className="company-list">
         {companies.map(c =>
           <CompanyCard
