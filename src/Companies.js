@@ -1,7 +1,8 @@
 import React from "react";
+import CompanyDetail from "./CompanyDetail";
 
-import CompanyCard from "./CompanyCard";
-
+/** Render a list of companies.
+ */
 function Companies() {
   return (
     <div>

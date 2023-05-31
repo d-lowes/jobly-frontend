@@ -1,12 +1,11 @@
 import './App.css';
-import NavBar from './NavBar'
 import RoutesList from './RoutesList';
 
+/** Render the routes list */
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <RoutesList />
+        <RoutesList />
     </div>
   );
 }

@@ -1,13 +1,21 @@
-import { React, BrowserRouter, Routes, Route } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Companies from './Companies';
 import CompanyDetail from './CompanyDetail';
 import Jobs from './Jobs';
+import NavBar from './NavBar';
+
+/** Render the NavBar and individual routes for jobs, companies, and company
+ * handle.
+ *
+ * app -> RoutesList -> { NavBar, Home, Companies, CompanyDetail, Jobs }
+ */
 
 function RoutesList() {
   return (
     <div className='routes-list'>
       <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/companies" element={<Companies />} />

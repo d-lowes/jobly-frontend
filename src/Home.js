@@ -1,5 +1,7 @@
 import React from "react";
 
+/** Render the homepage.
+ */
 function Home() {
   return (
     <div>

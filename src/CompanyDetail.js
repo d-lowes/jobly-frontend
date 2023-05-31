@@ -1,5 +1,7 @@
 import React from "react";
 
+/** Render the company detail.
+ */
 function CompanyDetail() {
   return (
     <div>

@@ -1,5 +1,7 @@
 import React from "react";
 
+/** Render a list of jobs.
+ */
 function Jobs() {
   return (
     <div>
