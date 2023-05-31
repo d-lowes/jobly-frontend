@@ -1,7 +1,11 @@
-// import React from "react";
+import React from "react";
 
-// function CompanyCard() {
+function CompanyCard({ company }) {
+ return(
+  <div>
 
-// }
+  </div>
+ )
+}
 
-// export default CompanyCard
+export default CompanyCard;
