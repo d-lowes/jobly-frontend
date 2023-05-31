@@ -1,22 +1,18 @@
 import React from "react";
-import { Link }  from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 /** Display NavBar with links to Home, Companies, and Jobs.
  */
 
-//TODO: use NavLink instead of link
 function NavBar() {
   return (
-    <nav className="NavBar">
-      <Link to="/">
-        Home
-      </Link>
-      <Link to="/companies">
-        Companies
-      </Link>
-      <Link to="/jobs">
-        Jobs
-      </Link>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <NavLink className="nav-item nav-link" to="/">Jobly</NavLink>
+      <div className="navbar" id="navbarNav">
+        <NavLink className="nav-item nav-link" to="/companies">Companies</NavLink>
+        <NavLink className="nav-item nav-link" to="/jobs">Jobs</NavLink>
+      </div>
     </nav>
   );
 }
