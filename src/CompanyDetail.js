@@ -11,25 +11,33 @@ import JobCardList from "./JobCardList";
  * CompanyCard -> CompanyDetail -> { JobCardList }
  */
 function CompanyDetail() {
-  const { handle } = useParams();
-  const [companyDetail, setCompany] = useState({});
-//TODO: ISLOADING
-  /** Render the company detail on mount. */
-  useEffect(() => {
-    async function getCompanyDetail() {
-      const newDetail = await JoblyApi.getCompany(handle);
-      setCompany(newDetail);
-    }
-    getCompanyDetail();
-  }, []);
+    const { handle } = useParams();
+    const [companyDetail, setCompany] = useState(({
+      data: null,
+      isLoading: true
+    }));
 
-  return (
-    <div>
-      <h6>{companyDetail.name}</h6>
-      <p>{companyDetail.description}</p>
-      {companyDetail.jobs && <JobCardList jobs={companyDetail.jobs} />}
-    </div>
-  );
-}
+    /** Render the company detail on mount. */
+    useEffect(() => {
+      async function getCompanyDetail() {
+        const newDetail = await JoblyApi.getCompany(handle);
+        setCompany(({
+          data: newDetail,
+          isLoading: false
+        }));
+      }
+      getCompanyDetail();
+    }, []);
+
+    if (companyDetail.isLoading) return <i>Loading...</i>;
+
+    return (
+      <div>
+        <h6>{companyDetail.data.name}</h6>
+        <p>{companyDetail.data.description}</p>
+        {companyDetail.data.jobs && <JobCardList jobs={companyDetail.data.jobs} />}
+      </div>
+    );
+  }
 
 export default CompanyDetail;

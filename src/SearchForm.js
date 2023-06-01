@@ -16,7 +16,7 @@ function SearchForm({ search }) {
   /** Call parent function and clear form. */
   function handleSubmit(evt) {
     evt.preventDefault();
-    search(formData);
+    search(formData.trim());
     setFormData("");
   }
 
@@ -25,8 +25,7 @@ function SearchForm({ search }) {
     const { value } = evt.target;
     setFormData(value);
   }
-//TODO: TRIM FROM DATA
-//TODO: if formdata is empty string do the thing
+
   return (
     <div>
       <form className="search-form" onSubmit={handleSubmit}>

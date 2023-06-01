@@ -9,20 +9,20 @@ import { Link } from "react-router-dom";
  * Companies -> CompanyCard -> { CompanyDetail }
  */
 
-//TODO: make whole eveything an link
-
 function CompanyCard({ handle, name, description, logoUrl }) {
   return (
-    <div className="card">
-      <div className="card-body">
-        {logoUrl && <img className="mr-0" src={logoUrl} alt={name}></img>}
-        <Link to={`/companies/${handle}`}>
+    <Link to={`/companies/${handle}`} style={{
+      textDecoration: "none",
+      color: "black"
+    }}>
+      <div className="card">
+        <div className="card-body">
+          {logoUrl && <img className="mr-0" src={logoUrl} alt={name}></img>}
           <h6>{name}</h6>
-        </Link>
-        <p>{description}</p>
+          <p>{description}</p>
+        </div>
       </div>
-
-    </div>
+    </Link>
   );
 }
 

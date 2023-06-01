@@ -12,25 +12,32 @@ import JobCardList from "./JobCardList";
  * RoutesList -> Jobs -> { JobCardList, SearchForm }
  */
 function Jobs() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState({
+    data: null,
+    isLoading: true
+  });
   /** Renders all Jobs on mount. */
   useEffect(() => {
     getJobs();
   }, []);
-//TODO: ISLOADING
 
   /** Retrieve a list of jobs from the API. */
   async function getJobs(title) {
     const jobs = await JoblyApi.getJobs(title);
-    setJobs(jobs);
+    setJobs({
+      data: jobs,
+      isLoading: false
+    });
   }
+
+  if (jobs.isLoading) return <i>Loading...</i>;
 
   return (
     <div>
       <h1>Jobs</h1>
       <SearchForm search={getJobs} />
       <div className="company-list">
-        <JobCardList jobs={jobs} />
+        <JobCardList jobs={jobs.data} />
       </div>
     </div>
   );

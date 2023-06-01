@@ -11,7 +11,6 @@ import NavBar from './NavBar';
  * app -> RoutesList -> { NavBar, Home, Companies, CompanyDetail, Jobs }
  */
 
-//FIXME: route to handle any path that is not defined
 function RoutesList() {
   return (
     <div className='routes-list'>
@@ -22,6 +21,7 @@ function RoutesList() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/companies/:handle" element={<CompanyDetail />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
