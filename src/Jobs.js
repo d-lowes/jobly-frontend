@@ -4,8 +4,12 @@ import { JoblyApi } from "./API";
 import SearchForm from "./SearchForm";
 import JobCardList from "./JobCardList";
 
-
-/** Render a list of jobs.
+/** Gets an array of jobs
+ *
+ * State:
+ * - jobs: a current list of jobs
+ *
+ * RoutesList -> Jobs -> { JobCardList, SearchForm }
  */
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -13,6 +17,7 @@ function Jobs() {
   useEffect(() => {
     getJobs();
   }, []);
+//TODO: ISLOADING
 
   /** Retrieve a list of jobs from the API. */
   async function getJobs(title) {

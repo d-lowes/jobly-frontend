@@ -1,5 +1,4 @@
 import React from "react";
-import './CompanyCard.css';
 import { Link } from "react-router-dom";
 
 /** Render information about a company.
@@ -9,6 +8,9 @@ import { Link } from "react-router-dom";
  *
  * Companies -> CompanyCard -> { CompanyDetail }
  */
+
+//TODO: make whole eveything an link
+
 function CompanyCard({ handle, name, description, logoUrl }) {
   return (
     <div className="card">

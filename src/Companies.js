@@ -4,8 +4,6 @@ import { JoblyApi } from "./API";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
 
-
-
 /** Render a list of companies.
  *
  * State:
@@ -26,7 +24,7 @@ function Companies() {
     const companies = await JoblyApi.getCompanies(searchInput);
     setCompanies(companies);
   }
-
+//TODO: ISLOADING
   return (
     <div>
       <h1>Companies</h1>

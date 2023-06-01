@@ -1,5 +1,12 @@
 import React from "react";
 
+/** Render a job.
+ *
+ * Jobs -> JobCardList -> JobCard
+ */
+
+//TODO: if equity is null, dont render it
+
 function JobCard({ salary, handle, equity, title }) {
   return (
     <div className="job-card">

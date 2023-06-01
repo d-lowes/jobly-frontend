@@ -1,6 +1,10 @@
 import React from "react";
 import JobCard from "./JobCard";
 
+/** Render a list of jobs.
+ *
+ * Jobs -> JobCardList -> { JobCard }
+ */
 function JobCardList({ jobs }) {
   return (
     <div className="jobs-list">

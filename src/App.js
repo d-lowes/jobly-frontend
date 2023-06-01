@@ -5,7 +5,7 @@ import RoutesList from './RoutesList';
 function App() {
   return (
     <div className="App">
-        <RoutesList />
+      <RoutesList />
     </div>
   );
 }
