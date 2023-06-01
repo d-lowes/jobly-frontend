@@ -14,11 +14,11 @@ import ProfileForm from './ProfileForm';
  * app -> RoutesList -> { NavBar, Home, Companies, CompanyDetail, Jobs }
  */
 
-function RoutesList({login, signup}) {
+function RoutesList({login, signup, logout}) {
   return (
     <div className='routes-list'>
       <BrowserRouter>
-        <NavBar />
+        <NavBar logout={logout}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/companies" element={<Companies />} />

@@ -67,7 +67,6 @@ class JoblyApi {
   }
 
   static async login(data) {
-    console.log("api login fdata", data)
     let res = await this.request(
       `auth/token`,
       {
@@ -80,7 +79,6 @@ class JoblyApi {
   }
 
   static async signup(data) {
-    console.log("api login fdata", data)
     let res = await this.request(
       `auth/register`,
       {
@@ -96,7 +94,6 @@ class JoblyApi {
   }
 
   static async editProfile({ data }) {
-    console.log("api login fdata", data)
     let res = await this.request(
       `users/${data.username}`,
       {
@@ -107,6 +104,11 @@ class JoblyApi {
       "patch"
     );
     return res.token;
+  }
+
+  static async getUser(username) {
+    let res = await this.request(`users/${username}`)
+    return res.user
   }
 }
 
