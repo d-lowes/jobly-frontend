@@ -4,6 +4,9 @@ import Companies from './Companies';
 import CompanyDetail from './CompanyDetail';
 import Jobs from './Jobs';
 import NavBar from './NavBar';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
+import ProfileForm from './ProfileForm';
 
 /** Render the NavBar and individual routes for jobs, companies, and company
  * handle.
@@ -11,7 +14,7 @@ import NavBar from './NavBar';
  * app -> RoutesList -> { NavBar, Home, Companies, CompanyDetail, Jobs }
  */
 
-function RoutesList() {
+function RoutesList({login}) {
   return (
     <div className='routes-list'>
       <BrowserRouter>
@@ -21,6 +24,9 @@ function RoutesList() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/companies/:handle" element={<CompanyDetail />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/login" element={<LoginForm login={login} />} />
+          <Route path="/signup" element={<SignupForm signup={signup} />} />
+          <Route path="/profile" element={<ProfileForm />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>

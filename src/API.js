@@ -15,9 +15,11 @@ class JoblyApi {
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+  static token;
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -64,6 +66,34 @@ class JoblyApi {
     return res.jobs;
   }
 
+  static async login(data) {
+    console.log("api login fdata", data)
+    let res = await this.request(
+      `auth/token`,
+      {
+        username: data.username,
+        password: data.password
+      },
+      "post"
+    );
+    return res.token;
+  }
+
+  static async signup(data) {
+    console.log("api login fdata", data)
+    let res = await this.request(
+      `auth/register`,
+      {
+        username: data.username,
+        password: data.password,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+      },
+      "post"
+    );
+    return res.token;
+  }
 }
 
 export { BASE_URL, JoblyApi };
