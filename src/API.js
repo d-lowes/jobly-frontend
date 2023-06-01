@@ -94,6 +94,20 @@ class JoblyApi {
     );
     return res.token;
   }
+
+  static async editProfile({ data }) {
+    console.log("api login fdata", data)
+    let res = await this.request(
+      `users/${data.username}`,
+      {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+      },
+      "patch"
+    );
+    return res.token;
+  }
 }
 
 export { BASE_URL, JoblyApi };
