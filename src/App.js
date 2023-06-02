@@ -16,15 +16,15 @@ import NavBar from './NavBar';
  * - fetchUser: get user data from the API
  */
 function App() {
-  const [token, setToken] = useState("");
+  let storedToken = localStorage.getItem("token") || null
+  const [token, setToken] = useState(storedToken);
   const [user, setUser] = useState(null);
 
   /**
    * When a token is set or changed, get the user data from the API, set user
    * and update the token
-   * */
-  //TODO: maintain function declaration consistency
-  useEffect(() => {
+   */
+  useEffect(function fetchAndSetUser() {
     async function fetchUser() {
       if (token) {
         const { username } = jwt_decode(token);

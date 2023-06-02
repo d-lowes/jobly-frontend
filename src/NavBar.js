@@ -13,11 +13,8 @@ import userContext from "./userContext";
 
 function NavBar({ logout }) {
   const { user } = useContext(userContext);
-  /*TODO:
-  create function of logged-inNav and logged-outNav and
-  use a ternary to return the function based on user status
-  */
-  if (!user) {
+
+  function loggedOutNav() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="nav-item nav-link" to="/">Jobly</NavLink>
@@ -27,7 +24,9 @@ function NavBar({ logout }) {
         </div>
       </nav>
     );
-  } else {
+  }
+
+  function loggedInNav() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="nav-item nav-link" to="/">Jobly</NavLink>
@@ -45,19 +44,11 @@ function NavBar({ logout }) {
     );
   }
 
-  // return (
-  //   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  //     <NavLink className="nav-item nav-link" to="/">Jobly</NavLink>
-  //     <div className="navbar" id="navbarNav">
-  //       <NavLink className="nav-item nav-link" to="/companies">Companies</NavLink>
-  //       <NavLink className="nav-item nav-link" to="/jobs">Jobs</NavLink>
-  //       {!user && <NavLink className="nav-item nav-link" to="/login">Login</NavLink>}
-  //       {!user && <NavLink className="nav-item nav-link" to="/signup">Signup</NavLink>}
-  //       {user && <NavLink className="nav-item nav-link" to="/profile">Profile</NavLink>}
-  //       {user && <NavLink className="nav-item nav-link" to="/" onClick={logout}>Logout {user.username}</NavLink>}
-  //     </div>
-  //   </nav>
-  // );
+  if (!user) {
+    return loggedOutNav();
+  } else {
+    return loggedInNav();
+  }
 }
 
-export default NavBar;;
+export default NavBar;

@@ -2,8 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//TODO: add docstrings
-//TODO: remove data
+//TODO: remove hardcoded data
+
+/** Render a signup form.
+ *
+ * Props:
+ * - signup: function that registers user into the database
+ *
+ * State:
+ * - formData: user's infotmation inputs
+ *
+ * { NavBar, RoutesList } -> SignupForm
+ */
 function SignupForm({ signup }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

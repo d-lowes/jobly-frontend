@@ -2,8 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//TODO: add docstrings
+//TODO: REMOVE HARDCODED DATA
 
+/** Render a Login form.
+ *
+ * Props:
+ * - login: function that authenticates user
+ *
+ * State:
+ * - formData: user's infotmation inputs
+ *
+ * { NavBar, RoutesList } -> LoginForm
+ */
 function LoginForm({login}) {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
