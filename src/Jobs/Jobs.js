@@ -4,7 +4,7 @@ import { JoblyApi } from "../API";
 import SearchForm from "../Forms/SearchForm";
 import JobCardList from "./JobCardList";
 import userContext from "../userContext";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 /** Gets an array of jobs
  *
@@ -15,10 +15,9 @@ import { useNavigate } from "react-router-dom";
  */
 function Jobs() {
   const { user } = useContext(userContext);
-  const navigate = useNavigate();
 
   if (!user) {
-    navigate("/");
+    return <Navigate to="/" />;
   }
 
   const [jobs, setJobs] = useState({

@@ -4,8 +4,7 @@ import { JoblyApi } from "../API";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "../Forms/SearchForm";
 import userContext from "../userContext";
-import { useNavigate } from "react-router-dom";
-
+import { Navigate } from "react-router-dom";
 
 /** Render a list of companies.
  *
@@ -16,10 +15,9 @@ import { useNavigate } from "react-router-dom";
  */
 function Companies() {
   const { user } = useContext(userContext);
-  const navigate = useNavigate();
 
   if (!user) {
-    navigate("/");
+    return <Navigate to="/" />;
   }
 
   const [companies, setCompanies] = useState(({

@@ -6,6 +6,8 @@ import Jobs from './Jobs/Jobs';
 import LoginForm from './Forms/LoginForm';
 import SignupForm from './Forms/SignupForm';
 import ProfileForm from './Forms/ProfileForm';
+import userContext from "../userContext";
+import { useContext } from 'react';
 
 /** Render the NavBar and individual routes for jobs, companies, and company
  * handle.
@@ -13,10 +15,12 @@ import ProfileForm from './Forms/ProfileForm';
  * app -> RoutesList -> { NavBar, Home, Companies, CompanyDetail, Jobs }
  */
 
-//TODO: if current user render the route components
-function RoutesList({login, signup, logout}) {
-  return (
-    <div className='routes-list'>
+function RoutesList({ login, signup }) {
+  const { user } = useContext(userContext);
+
+  function loggedInRoutes() {
+    return (
+      <div className='routes-list'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/companies" element={<Companies />} />
@@ -27,8 +31,28 @@ function RoutesList({login, signup, logout}) {
           {/* <Route path="/profile" element={<ProfileForm />} /> */}
           <Route path="*" element={<Home />} />
         </Routes>
-    </div>
-  );
+      </div>
+    );
+  }
+
+  function loggedOutRoutes() {
+    return (
+      <div className='routes-list'>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginForm login={login} />} />
+          <Route path="/signup" element={<SignupForm signup={signup} />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </div>
+    );
+  }
+
+  if (user) {
+    return loggedInRoutes();
+  } else {
+    loggedOutRoutes();
+  }
 }
 
 export default RoutesList;
