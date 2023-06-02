@@ -51,7 +51,7 @@ function RoutesList({ login, signup }) {
   if (user) {
     return loggedInRoutes();
   } else {
-    loggedOutRoutes();
+    return loggedOutRoutes();
   }
 }
 

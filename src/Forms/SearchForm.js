@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 
-
 /** Render a search form.
  *
  * Props:
@@ -28,13 +27,16 @@ function SearchForm({ search }) {
 
   return (
     <div>
-      <form className="search-form" onSubmit={handleSubmit}>
+      <form className="registration-form" onSubmit={handleSubmit}>
         <input
+          className="item"
           placeholder="Search for a company"
           value={formData}
           onChange={handleChange}>
         </input>
-        <button className="btn-primary">Submit</button>
+        <div>
+          <button className="btn btn-success">Submit</button>
+        </div>
       </form>
     </div>
   );

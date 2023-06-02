@@ -2,7 +2,9 @@ import React from "react";
 import { useState, useContext } from "react";
 import { JoblyApi } from "../API";
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import userContext from "../userContext";
+import './FormTemplate.css';
 
 /** Render a Profile form.
  *
@@ -13,6 +15,7 @@ import userContext from "../userContext";
  */
 function ProfileForm() {
   const { user } = useContext(userContext);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: user.username,
@@ -37,8 +40,10 @@ function ProfileForm() {
     evt.preventDefault();
     await JoblyApi.editProfile(formData);
 
+    alert("Profile updated!");
+
     return (
-      <Navigate to="/profile" />
+      navigate("/profile")
     );
   }
 
@@ -47,12 +52,13 @@ function ProfileForm() {
   }
 
   return (
-    <div className=" container-fluid">
-      <form className="search-form " onSubmit={handleSubmit}>
+    <div className="registration-form">
+      <form onSubmit={handleSubmit}>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="username-input">Username:</label>
           <input
+            className="form-control item"
             disabled="disabled"
             name="username"
             id="username-input"
@@ -60,9 +66,10 @@ function ProfileForm() {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
-          <label htmlFor="firstName-input">First Name:</label>
+        <div className="form-group">
+          <label className="text" htmlFor="firstName-input">First Name:</label>
           <input
+            className="form-control item"
             name="firstName"
             id="firstName-input"
             value={formData.firstName}
@@ -70,9 +77,10 @@ function ProfileForm() {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="lastName-input ">Last Name:</label>
           <input
+            className="form-control item"
             name="lastName"
             id="lastName-input"
             value={formData.lastName}
@@ -80,9 +88,10 @@ function ProfileForm() {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="email-input">Email:</label>
           <input
+            className="form-control item"
             name="email"
             id="email-input"
             value={formData.email}
@@ -90,8 +99,8 @@ function ProfileForm() {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
-          <button className="btn-primary">Submit</button>
+        <div className="form-group">
+          <button className="btn btn-block create-account">Submit</button>
         </div>
       </form>
     </div>

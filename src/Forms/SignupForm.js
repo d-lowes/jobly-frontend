@@ -2,8 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//TODO: remove hardcoded data
-
 /** Render a signup form.
  *
  * Props:
@@ -17,11 +15,11 @@ import { useNavigate } from "react-router-dom";
 function SignupForm({ signup }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "islandboi",
-    password: "password",
-    firstName: "island",
-    lastName: "boi",
-    email: "island@boi.com"
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: ""
   });
 
   /** Handle form change. */
@@ -43,12 +41,13 @@ function SignupForm({ signup }) {
   }
 
   return (
-    <div className=" container-fluid">
-      <form className="search-form " onSubmit={handleSubmit}>
+    <div className="registration-form">
+      <form onSubmit={handleSubmit}>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="username-input">Username:</label>
           <input
+            className="form-control item"
             name="username"
             id="username-input"
             value={formData.username}
@@ -57,9 +56,10 @@ function SignupForm({ signup }) {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="password-input">Password:</label>
           <input
+            className="form-control item"
             name="password"
             id="password-input"
             value={formData.password}
@@ -68,9 +68,10 @@ function SignupForm({ signup }) {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="firstName-input">First Name:</label>
           <input
+            className="form-control item"
             name="firstName"
             id="firstName-input"
             value={formData.firstName}
@@ -78,9 +79,10 @@ function SignupForm({ signup }) {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="lastName-input ">Last Name:</label>
           <input
+            className="form-control item"
             name="lastName"
             id="lastName-input"
             value={formData.lastName}
@@ -88,18 +90,18 @@ function SignupForm({ signup }) {
           ></input>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="form-group">
           <label htmlFor="email-input">Email:</label>
           <input
+            className="form-control item"
             name="email"
             id="email-input"
             value={formData.email}
             onChange={handleChange}
           ></input>
         </div>
-
-        <div className="row justify-content-center">
-          <button className="btn-primary">Submit</button>
+        <div>
+          <button className="btn-primary btn-block create-account">Submit</button>
         </div>
       </form>
     </div>

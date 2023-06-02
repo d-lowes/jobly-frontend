@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
  *
  * { NavBar, RoutesList } -> LoginForm
  */
-function LoginForm({login}) {
-  const navigate = useNavigate()
+function LoginForm({ login }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: ""
@@ -32,32 +32,40 @@ function LoginForm({login}) {
 
   /** Handle form submit. */
   async function handleSubmit(evt) {
-    evt.preventDefault()
-    await login(formData)
-    navigate("/")
+    evt.preventDefault();
+    await login(formData);
+    navigate("/");
   }
 
   return (
-    <div>
-      <form className="search-form" onSubmit={handleSubmit}>
-        <label htmlFor="username-input">Username:</label>
-        <input
-          name="username"
-          id="username-input"
-          value={formData.username}
-          onChange={handleChange}
-        ></input>
-        <label htmlFor="password-input">Password:</label>
-        <input
-          name="password"
-          id="password-input"
-          value={formData.password}
-          type="password"
-          onChange={handleChange}
-        ></input>
-        <button className="btn-primary">Submit</button>
-      </form>
-    </div>
+    <div className="registration-form">
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username-input">Username:</label>
+          <input
+            className="form-control item"
+            name="username"
+            id="username-input"
+            value={formData.username}
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="form-group">
+          <label htmlFor="password-input">Password:</label>
+          <input
+            className="form-control item"
+            name="password"
+            id="password-input"
+            value={formData.password}
+            type="password"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div>
+          <button className="btn create-account">Submit</button>
+        </div>
+      </form >
+    </div >
   );
 }
 
