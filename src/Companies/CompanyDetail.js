@@ -1,7 +1,9 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { JoblyApi } from "./API";
-import JobCardList from "./JobCardList";
+import { JoblyApi } from "../API";
+import JobCardList from "../Jobs/JobCardList";
+import { useNavigate } from "react-router-dom";
+import userContext from "../userContext";
 
 /** Render the company detail.
  *
@@ -11,6 +13,13 @@ import JobCardList from "./JobCardList";
  * CompanyCard -> CompanyDetail -> { JobCardList }
  */
 function CompanyDetail() {
+  const { user } = useContext(userContext);
+  const navigate = useNavigate();
+
+  if (!user) {
+    navigate("/");
+  }
+
     const { handle } = useParams();
     const [companyDetail, setCompany] = useState(({
       data: null,

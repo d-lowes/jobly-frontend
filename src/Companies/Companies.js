@@ -1,8 +1,11 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { JoblyApi } from "./API";
+import { useEffect, useState, useContext } from "react";
+import { JoblyApi } from "../API";
 import CompanyCard from "./CompanyCard";
-import SearchForm from "./SearchForm";
+import SearchForm from "../Forms/SearchForm";
+import userContext from "../userContext";
+import { useNavigate } from "react-router-dom";
+
 
 /** Render a list of companies.
  *
@@ -12,6 +15,13 @@ import SearchForm from "./SearchForm";
  * RoutesList -> Companies -> { CompanyCard, SearchForm }
  */
 function Companies() {
+  const { user } = useContext(userContext);
+  const navigate = useNavigate();
+
+  if (!user) {
+    navigate("/");
+  }
+
   const [companies, setCompanies] = useState(({
     data: null,
     isLoading: true

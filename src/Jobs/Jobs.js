@@ -1,8 +1,10 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { JoblyApi } from "./API";
-import SearchForm from "./SearchForm";
+import { useEffect, useState, useContext } from "react";
+import { JoblyApi } from "../API";
+import SearchForm from "../Forms/SearchForm";
 import JobCardList from "./JobCardList";
+import userContext from "../userContext";
+import { useNavigate } from "react-router-dom";
 
 /** Gets an array of jobs
  *
@@ -12,6 +14,13 @@ import JobCardList from "./JobCardList";
  * RoutesList -> Jobs -> { JobCardList, SearchForm }
  */
 function Jobs() {
+  const { user } = useContext(userContext);
+  const navigate = useNavigate();
+
+  if (!user) {
+    navigate("/");
+  }
+
   const [jobs, setJobs] = useState({
     data: null,
     isLoading: true

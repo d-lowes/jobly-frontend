@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
-import Companies from './Companies';
-import CompanyDetail from './CompanyDetail';
-import Jobs from './Jobs';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
-import ProfileForm from './ProfileForm';
+import Companies from './Companies/Companies';
+import CompanyDetail from './Companies/CompanyDetail';
+import Jobs from './Jobs/Jobs';
+import LoginForm from './Forms/LoginForm';
+import SignupForm from './Forms/SignupForm';
+import ProfileForm from './Forms/ProfileForm';
 
 /** Render the NavBar and individual routes for jobs, companies, and company
  * handle.
@@ -13,6 +13,7 @@ import ProfileForm from './ProfileForm';
  * app -> RoutesList -> { NavBar, Home, Companies, CompanyDetail, Jobs }
  */
 
+//TODO: if current user render the route components
 function RoutesList({login, signup, logout}) {
   return (
     <div className='routes-list'>

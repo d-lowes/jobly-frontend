@@ -14,6 +14,7 @@ import userContext from "./userContext";
 function NavBar({ logout }) {
   const { user } = useContext(userContext);
 
+  /** Show login and signup on the NavBar if no user is logged in */
   function loggedOutNav() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,6 +27,9 @@ function NavBar({ logout }) {
     );
   }
 
+  /** Show Jobs, Companies, logout, and Profile on the NavBar ifuser is logged
+   *  in
+  */
   function loggedInNav() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">

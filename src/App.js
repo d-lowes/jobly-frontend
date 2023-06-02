@@ -16,9 +16,11 @@ import NavBar from './NavBar';
  * - fetchUser: get user data from the API
  */
 function App() {
-  let storedToken = localStorage.getItem("token") || null
-  const [token, setToken] = useState(storedToken);
-  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [user, setUser] = useState({
+      data: null,
+      isLoading: true
+  });
 
   /**
    * When a token is set or changed, get the user data from the API, set user
@@ -30,33 +32,47 @@ function App() {
         const { username } = jwt_decode(token);
         JoblyApi.token = token;
         const currUser = await JoblyApi.getUser(username);
-        setUser(currUser);
+        setUser({
+          data: currUser,
+          isLoading: false
+        });
       } else {
-        setUser(null);
+        setUser({
+          data: null,
+          isLoading: false
+        });
       }
     }
     fetchUser();
   }, [token]);
 
-  /** Login and get token from the backend, store it on the token state */
+  /** Login and get token from the backend, store it on the token state and
+   * localStorage */
   async function login(data) {
     const newToken = await JoblyApi.login(data);
     setToken(newToken);
+    localStorage.setItem("token", newToken);
   }
 
-  /** Signup and get token from the backend, store it on the token state */
+  /** Signup and get token from the backend, store it on the token state and
+   * localStorage
+  */
   async function signup(data) {
     const newToken = await JoblyApi.signup(data);
     setToken(newToken);
+    localStorage.setItem("token", newToken);
   }
 
-  /** Reset the token and user states */
+  /** Reset the token, user states, remove token from localStorage */
   function logout() {
     setToken("");
+    localStorage.removeItem("token");
   }
 
+  if (user.isLoading) return <i>Loading...</i>;
+
   return (
-    <userContext.Provider value={{ user }}>
+    <userContext.Provider value={{ user: user.data }}>
       <div className="App">
         <NavBar logout={logout} />
         <RoutesList login={login} signup={signup} logout={logout} />
