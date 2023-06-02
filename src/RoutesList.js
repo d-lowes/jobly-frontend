@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Companies from './Companies';
 import CompanyDetail from './CompanyDetail';
 import Jobs from './Jobs';
-import NavBar from './NavBar';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import ProfileForm from './ProfileForm';
@@ -17,8 +16,6 @@ import ProfileForm from './ProfileForm';
 function RoutesList({login, signup, logout}) {
   return (
     <div className='routes-list'>
-      <BrowserRouter>
-        <NavBar logout={logout}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/companies" element={<Companies />} />
@@ -26,10 +23,9 @@ function RoutesList({login, signup, logout}) {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/login" element={<LoginForm login={login} />} />
           <Route path="/signup" element={<SignupForm signup={signup} />} />
-          <Route path="/profile" element={<ProfileForm />} />
+          {/* <Route path="/profile" element={<ProfileForm />} /> */}
           <Route path="*" element={<Home />} />
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

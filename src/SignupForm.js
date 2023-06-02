@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+//TODO: add docstrings
+//TODO: remove data
 function SignupForm({ signup }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -11,7 +13,6 @@ function SignupForm({ signup }) {
     lastName: "boi",
     email: "island@boi.com"
   });
-
 
   function handleChange(evt) {
     const fieldName = evt.target.name;

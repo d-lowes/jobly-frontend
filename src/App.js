@@ -1,9 +1,10 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import userContext from "./userContext";
 import { JoblyApi } from './API';
 import './App.css';
 import RoutesList from './RoutesList';
 import jwt_decode from "jwt-decode";
+import NavBar from './NavBar';
 
 /** Render the routes list
  *
@@ -11,51 +12,54 @@ import jwt_decode from "jwt-decode";
  * - token: the token returned from signing up/logging in
  * - user: user object
  *
+ * effect:
+ * - fetchUser: get user data from the API
  */
 function App() {
   const [token, setToken] = useState("");
   const [user, setUser] = useState(null);
 
-  // everytime token is changed, get the username and query database
+  /**
+   * When a token is set or changed, get the user data from the API, set user
+   * and update the token
+   * */
+  //TODO: maintain function declaration consistency
   useEffect(() => {
     async function fetchUser() {
       if (token) {
         const { username } = jwt_decode(token);
-        // const decodedHeader = jwt_decode(token, { header: true });
-        console.log("decoded token username =", username);
-
         JoblyApi.token = token;
         const currUser = await JoblyApi.getUser(username);
         setUser(currUser);
+      } else {
+        setUser(null);
       }
     }
     fetchUser();
   }, [token]);
 
-
-  // login and get token from the backend, store it on the token state
+  /** Login and get token from the backend, store it on the token state */
   async function login(data) {
     const newToken = await JoblyApi.login(data);
     setToken(newToken);
   }
 
-  // signup and get token from the backend, store it on the token state
+  /** Signup and get token from the backend, store it on the token state */
   async function signup(data) {
     const newToken = await JoblyApi.signup(data);
     setToken(newToken);
   }
 
+  /** Reset the token and user states */
   function logout() {
     setToken("");
-    setUser(null);
   }
 
   return (
     <userContext.Provider value={{ user }}>
       <div className="App">
-
-        <RoutesList login={login} signup={signup} logout={logout}/>
-
+        <NavBar logout={logout} />
+        <RoutesList login={login} signup={signup} logout={logout} />
       </div>
     </userContext.Provider>
   );

@@ -1,13 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import userContext from "./userContext";
+import { JoblyApi } from "./API";
 
+
+//TODO: STEP 5!
 function ProfileForm({ editProfile }) {
+  const { user } = useContext(userContext);
   const navigate = useNavigate();
+
+  if (user.username === null) {
+    navigate("/");
+  }
+
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: ""
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email
   });
 
   function handleChange(evt) {
@@ -22,7 +33,7 @@ function ProfileForm({ editProfile }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await editProfile(formData);
+    await JoblyApi.editProfile(formData);
     navigate("/profile");
   }
 
@@ -36,8 +47,7 @@ function ProfileForm({ editProfile }) {
             disabled="disabled"
             name="username"
             id="username-input"
-            value={formData.username}
-            onChange={handleChange}
+            value={user.username}
           ></input>
         </div>
 
