@@ -6,7 +6,7 @@ import Jobs from './Jobs/Jobs';
 import LoginForm from './Forms/LoginForm';
 import SignupForm from './Forms/SignupForm';
 import ProfileForm from './Forms/ProfileForm';
-import userContext from "../userContext";
+import userContext from "./userContext";
 import { useContext } from 'react';
 
 /** Render the NavBar and individual routes for jobs, companies, and company
@@ -28,7 +28,7 @@ function RoutesList({ login, signup }) {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/login" element={<LoginForm login={login} />} />
           <Route path="/signup" element={<SignupForm signup={signup} />} />
-          {/* <Route path="/profile" element={<ProfileForm />} /> */}
+          <Route path="/profile" element={<ProfileForm />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </div>

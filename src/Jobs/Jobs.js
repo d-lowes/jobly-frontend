@@ -16,10 +16,6 @@ import { Navigate } from "react-router-dom";
 function Jobs() {
   const { user } = useContext(userContext);
 
-  if (!user) {
-    return <Navigate to="/" />;
-  }
-
   const [jobs, setJobs] = useState({
     data: null,
     isLoading: true
@@ -39,6 +35,10 @@ function Jobs() {
   }
 
   if (jobs.isLoading) return <i>Loading...</i>;
+
+  if (!user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div>

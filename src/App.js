@@ -18,8 +18,8 @@ import NavBar from './NavBar';
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [user, setUser] = useState({
-      data: null,
-      isLoading: true
+    data: null,
+    isLoading: true
   });
 
   /**

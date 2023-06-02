@@ -2,8 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//TODO: REMOVE HARDCODED DATA
-
 /** Render a Login form.
  *
  * Props:
@@ -17,10 +15,11 @@ import { useNavigate } from "react-router-dom";
 function LoginForm({login}) {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    username: "islandboi",
-    password: "password"
+    username: "",
+    password: ""
   });
 
+  /** Handle form change. */
   function handleChange(evt) {
     const fieldName = evt.target.name;
     const value = evt.target.value;
@@ -31,6 +30,7 @@ function LoginForm({login}) {
     });
   }
 
+  /** Handle form submit. */
   async function handleSubmit(evt) {
     evt.preventDefault()
     await login(formData)

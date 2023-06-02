@@ -87,8 +87,7 @@ class JoblyApi {
   }
 
   /** Edit user profile. */
-  static async editProfile({ data }) {
-    console.log("user data =", data);
+  static async editProfile(data) {
     await this.request(
       `users/${data.username}`,
       {
@@ -98,7 +97,6 @@ class JoblyApi {
       },
       "patch"
     );
-    // return something
   }
 
 

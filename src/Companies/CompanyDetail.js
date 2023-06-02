@@ -14,11 +14,6 @@ import userContext from "../userContext";
  */
 function CompanyDetail() {
   const { user } = useContext(userContext);
-
-  if (!user) {
-    return <Navigate to="/" />;
-  }
-
   const { handle } = useParams();
   const [companyDetail, setCompany] = useState(({
     data: null,
@@ -26,7 +21,7 @@ function CompanyDetail() {
   }));
 
   /** Render the company detail on mount. */
-  useEffect(() => {
+  useEffect(function () {
     async function getCompanyDetail() {
       const newDetail = await JoblyApi.getCompany(handle);
       setCompany(({
@@ -39,11 +34,16 @@ function CompanyDetail() {
 
   if (companyDetail.isLoading) return <i>Loading...</i>;
 
+  if (!user) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div>
       <h6>{companyDetail.data.name}</h6>
       <p>{companyDetail.data.description}</p>
-      {companyDetail.data.jobs && <JobCardList jobs={companyDetail.data.jobs} />}
+      {companyDetail.data.jobs &&
+        <JobCardList jobs={companyDetail.data.jobs} />}
     </div>
   );
 }

@@ -4,13 +4,15 @@ import { JoblyApi } from "../API";
 import { Navigate } from "react-router-dom";
 import userContext from "../userContext";
 
-//TODO: STEP 5!
-function ProfileForm({ editProfile }) {
+/** Render a Profile form.
+ *
+ * State:
+ * - formData: user's infotmation inputs
+ *
+ * { NavBar, RoutesList } -> ProfileForm
+ */
+function ProfileForm() {
   const { user } = useContext(userContext);
-
-  if (!user) {
-    return <Navigate to="/" />;
-  }
 
   const [formData, setFormData] = useState({
     username: user.username,
@@ -19,6 +21,7 @@ function ProfileForm({ editProfile }) {
     email: user.email
   });
 
+  /** Handle form change. */
   function handleChange(evt) {
     const fieldName = evt.target.name;
     const value = evt.target.value;
@@ -29,10 +32,18 @@ function ProfileForm({ editProfile }) {
     });
   }
 
+  /** Handle form submit. */
   async function handleSubmit(evt) {
     evt.preventDefault();
     await JoblyApi.editProfile(formData);
-    navigate("/profile");
+
+    return (
+      <Navigate to="/profile" />
+    );
+  }
+
+  if (!user) {
+    return <Navigate to="/" />;
   }
 
   return (

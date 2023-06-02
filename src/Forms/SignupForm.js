@@ -24,6 +24,7 @@ function SignupForm({ signup }) {
     email: "island@boi.com"
   });
 
+  /** Handle form change. */
   function handleChange(evt) {
     const fieldName = evt.target.name;
     const value = evt.target.value;
@@ -34,6 +35,7 @@ function SignupForm({ signup }) {
     });
   }
 
+  /** Handle form submit. */
   async function handleSubmit(evt) {
     evt.preventDefault();
     await signup(formData);

@@ -4,8 +4,6 @@ import React from "react";
  *
  * Jobs -> JobCardList -> JobCard
  */
-
-
 function JobCard({ salary, handle, equity, title }) {
   return (
     <div className="job-card">

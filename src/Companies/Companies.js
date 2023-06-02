@@ -6,6 +6,7 @@ import SearchForm from "../Forms/SearchForm";
 import userContext from "../userContext";
 import { Navigate } from "react-router-dom";
 
+
 /** Render a list of companies.
  *
  * State:
@@ -15,18 +16,13 @@ import { Navigate } from "react-router-dom";
  */
 function Companies() {
   const { user } = useContext(userContext);
-
-  if (!user) {
-    return <Navigate to="/" />;
-  }
-
   const [companies, setCompanies] = useState(({
     data: null,
     isLoading: true
   }));
 
   /** Renders all companies on mount. */
-  useEffect(() => {
+  useEffect(function () {
     searchCompanies();
   }, []);
 
@@ -40,6 +36,10 @@ function Companies() {
   }
 
   if (companies.isLoading) return <i>Loading...</i>;
+
+  if (!user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div>
