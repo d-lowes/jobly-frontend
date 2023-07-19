@@ -8,8 +8,8 @@ This repository contains the frontend solution for Jobly, a job board applicatio
 ### Prerequisites
 Before setting up the Jobly frontend, ensure that you have the following dependencies installed:
 
-Node.js (version 14 or above)
-npm (Node package manager)
+- Node.js (version 14 or above)
+- npm (Node package manager)
 
 ### Installation
 To install the frontend application, follow these steps:
