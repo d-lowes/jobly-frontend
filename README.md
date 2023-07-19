@@ -3,7 +3,7 @@ This repository contains the frontend solution for Jobly, a job board applicatio
 
 ## Start the backend
 
-[In the project directory, you can run:](https://github.com/d-lowes/jobly-backend)
+[In the project directory, you can setup this backend server](https://github.com/d-lowes/jobly-backend)
 
 ### Prerequisites
 Before setting up the Jobly frontend, ensure that you have the following dependencies installed:
