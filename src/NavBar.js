@@ -52,20 +52,15 @@ function NavBar({ logout }) {
   }
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-dark"
-      data-bs-theme="dark">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">Jobly</NavLink>
-        <button className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarColor01"
-          aria-controls="navbarColor01"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarColor01">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <NavLink className="flex items-center" to="/">
+          <img src="/logos/jobly.png" className="h-8 mr-3" alt="jobly logo"></img>
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Jobly</span>
+
+        </NavLink>
+
+        <div className="" id="">
 
           {user ? loggedInNav() : loggedOutNav()}
 

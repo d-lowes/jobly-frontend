@@ -73,7 +73,7 @@ function App() {
 
   return (
     <userContext.Provider value={{ user: user.data }}>
-      <div className="App">
+      <div className="App font-mono">
         <NavBar logout={logout} />
         <RoutesList login={login} signup={signup} logout={logout} />
       </div>
