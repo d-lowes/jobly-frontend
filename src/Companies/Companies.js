@@ -42,7 +42,7 @@ function Companies() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <h1>Companies</h1>
       <SearchForm search={searchCompanies} />
       <div className="company-list">

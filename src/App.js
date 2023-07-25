@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import userContext from "./userContext";
 import { JoblyApi } from './API';
-import './App.css';
 import RoutesList from './RoutesList';
 import jwt_decode from "jwt-decode";
 import NavBar from './NavBar';
