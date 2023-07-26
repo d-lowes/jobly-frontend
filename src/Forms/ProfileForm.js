@@ -4,7 +4,6 @@ import { JoblyApi } from "../API";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import userContext from "../userContext";
-import './FormTemplate.css';
 
 /** Render a Profile form.
  *
