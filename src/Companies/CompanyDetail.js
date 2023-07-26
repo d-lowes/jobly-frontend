@@ -39,9 +39,13 @@ function CompanyDetail() {
   }
 
   return (
-    <div>
-      <h6>{companyDetail.data.name}</h6>
-      <p>{companyDetail.data.description}</p>
+    <div className="bg-job-hiring bg-scroll min-h-screen flex flex-col items-center justify-center">
+      <div className="bg-black flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-4">
+        <h1 className="mb-4 font-extrabold leading-none text-3xl py-2 text-white">
+          {companyDetail.data.name}
+        </h1>
+        <p className="text-white">{companyDetail.data.description}</p>
+      </div>
       {companyDetail.data.jobs &&
         <JobCardList jobs={companyDetail.data.jobs} />}
     </div>

@@ -71,7 +71,7 @@ function NavBar({ logout }) {
   }
 
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className="fixed w-full bg-white border-gray-200 dark:bg-gray-900 top-0 z-50">
       <Navbar.Brand href="/">
         <img
           alt="Jobly Logo"
