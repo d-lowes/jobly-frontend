@@ -26,16 +26,18 @@ function SearchForm({ search }) {
   }
 
   return (
-    <div>
-      <form className="registration-form" onSubmit={handleSubmit}>
+    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
         <input
-          className="item"
-          placeholder="Search for a company"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 form-control item"
+          placeholder="Search keywords"
           value={formData}
           onChange={handleChange}>
         </input>
         <div>
-          <button className="btn btn-success">Submit</button>
+          <button className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 btn-primary btn-block create-account">
+            Search
+          </button>
         </div>
       </form>
     </div>

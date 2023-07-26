@@ -43,9 +43,9 @@ function Companies() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1>Companies</h1>
+      <h1 className="mb-4 font-extrabold leading-none text-3xl py-2">Companies</h1>
       <SearchForm search={searchCompanies} />
-      <div className="company-list">
+      <div>
         {companies.data.map(c =>
           <CompanyCard
             key={c.handle}

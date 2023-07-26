@@ -13,7 +13,7 @@ function CompanyCard({ handle, name, description, logoUrl }) {
   return (
     <Link to={`/companies/${handle}`}>
       <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <div className="">
+        <div className="flex flex-col items-center justify-center space-y-4">
           {logoUrl && <img className="" src={logoUrl} alt={name}></img>}
           <h6>{name}</h6>
           <p>{description}</p>
