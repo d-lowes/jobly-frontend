@@ -41,8 +41,8 @@ function Jobs() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h1 className="mb-4 font-extrabold leading-none text-3xl py-2">Jobs</h1>
+    <div className="bg-job-hiring bg-scroll flex flex-col items-center justify-center">
+      <h1 className="mb-4 font-extrabold leading-none text-3xl py-2 text-white">Jobs</h1>
       <SearchForm search={getJobs} />
       <div className="company-list">
         <JobCardList jobs={jobs.data} />
