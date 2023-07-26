@@ -72,4 +72,4 @@ function NavBar({ logout }) {
   );
 }
 
-export default NavBar;;
+export default NavBar;
