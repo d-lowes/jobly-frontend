@@ -1,14 +1,6 @@
 # Jobly Frontend
 This repository contains the frontend solution for Jobly, a job board application. Jobly allows users to browse and search for job listings, create an account, and apply for jobs. This README provides instructions on setting up and running the frontend application.
 
-### Live demo with test user credentials
-
-[Live demo](https://d-lowes-jobly.surge.sh/)
-
-**Username:** tuckerdiane
-
-**Password:** password
-
 ## Start the backend
 
 [In the project directory, you can setup this backend server](https://github.com/d-lowes/jobly-backend)
